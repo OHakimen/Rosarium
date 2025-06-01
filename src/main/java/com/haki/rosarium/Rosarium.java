@@ -10,10 +10,10 @@ import static com.haki.rosarium.extras.SupporterHelper.loadSupporterData;
 @Mod(Rosarium.MODID)
 public class Rosarium {
 
+
     public static final String MODID = "rosarium";
     public Rosarium(IEventBus modEventBus, ModContainer modContainer) {
         loadSupporterData();
-
 
         Registry.register(modEventBus);
     }
