@@ -8,7 +8,6 @@ public class Supporter {
 
     UUID supporterUUID;
     boolean isDev;
-
     public UUID getSupporterUUID() {
         return supporterUUID;
     }
@@ -16,5 +15,4 @@ public class Supporter {
     public boolean isDev() {
         return isDev;
     }
-
 }

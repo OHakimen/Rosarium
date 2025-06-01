@@ -28,17 +28,7 @@ public class TestItem extends RosariumItem implements IWipItem, IVariantHolder {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
-
-        if(player.level().isClientSide){
-            Minecraft.getInstance().setScreen(new PickVariantScreen(stack));
-        }
-
         return InteractionResultHolder.success(stack);
-    }
-
-    @Override
-    public void playerArmorTick(ItemStack stack, Level world, Player player, EquipmentSlot slot) {
-
     }
 
     @Override
@@ -61,9 +51,9 @@ public class TestItem extends RosariumItem implements IWipItem, IVariantHolder {
     @Override
     public List<Component> variantNames(ItemStack stack) {
         return List.of(
-                Component.literal("The Stick of D  E  A  T  H").withColor(RosariumConstants.getRoseRed()),
-                Component.literal("Empty Bottle").withColor(RosariumConstants.getRoseRed()),
-                Component.literal("Sworb").withColor(RosariumConstants.getRoseRed())
+                Component.literal("ZA WARUDO"),
+                Component.literal("Empty Bottle"),
+                Component.literal("Sworb")
         );
     }
 

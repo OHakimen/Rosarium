@@ -9,5 +9,5 @@ public interface IVariantHolder {
     int getVariant(ItemStack stack);
     int getMaxVariants(ItemStack stack);
     void setVariant(ItemStack stack, int variant);
-    default List<Component> variantNames(ItemStack stack) {return List.of(); };
+    List<Component> variantNames(ItemStack stack);
 }

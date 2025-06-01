@@ -1,4 +1,4 @@
-package com.haki.rosarium.client.event;
+package com.haki.rosarium.common.event;
 
 import com.haki.rosarium.Rosarium;
 import com.haki.rosarium.RosariumConstants;

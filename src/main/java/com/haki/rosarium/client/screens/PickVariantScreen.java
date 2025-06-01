@@ -1,6 +1,8 @@
 package com.haki.rosarium.client.screens;
 
 import com.haki.rosarium.common.api.item.IVariantHolder;
+import com.haki.rosarium.common.packets.SyncVariantChangeC2S;
+import com.haki.rosarium.extras.SupporterHelper;
 import com.mojang.blaze3d.platform.Lighting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -12,6 +14,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.joml.Quaternionf;
 
 public class PickVariantScreen extends Screen {
@@ -31,6 +34,8 @@ public class PickVariantScreen extends Screen {
 
     @Override
     protected void init() {
+
+
         if (renderedStack.getItem() instanceof IVariantHolder holder) {
             Integer[] ints = new Integer[holder.getMaxVariants(renderedStack)];
 
@@ -44,14 +49,14 @@ public class PickVariantScreen extends Screen {
                     .create(this.getMinecraft().getWindow().getGuiScaledWidth()/2 - 75, getMinecraft().getWindow().getGuiScaledHeight() - 60, 150, 20, Component.literal("Variant"), (cycleButton, integer) -> {
                         holder.setVariant(renderedStack, integer);
                     }));
-        }
 
-        addRenderableWidget(new Button.Builder(Component.literal("Confirm"), button -> {
-            // this is client side so
-            // TODO: Network this so its possible to change the variant in a server
-            stack.set(DataComponents.CUSTOM_DATA, renderedStack.get(DataComponents.CUSTOM_DATA));
-            this.onClose();
-        }).pos(this.getMinecraft().getWindow().getGuiScaledWidth()/2 - 75, getMinecraft().getWindow().getGuiScaledHeight() - 35).build());
+            addRenderableWidget(new Button.Builder(Component.literal("Confirm"), button -> {
+                // this is client side so
+                PacketDistributor.sendToServer(new SyncVariantChangeC2S(holder.getVariant(renderedStack)));
+                this.onClose();
+
+            }).pos(this.getMinecraft().getWindow().getGuiScaledWidth()/2 - 75, getMinecraft().getWindow().getGuiScaledHeight() - 35).build());
+        }
     }
 
     @Override
@@ -63,6 +68,7 @@ public class PickVariantScreen extends Screen {
         BakedModel bakedmodel = this.minecraft.getItemRenderer().getModel(renderedStack, getMinecraft().level, null, 0);
         guiGraphics.pose().translate((float) (getMinecraft().getWindow().getGuiScaledWidth()/2), (float) getMinecraft().getWindow().getGuiScaledHeight()/2 - 32, (float) 200);
         guiGraphics.pose().mulPose(new Quaternionf().rotateXYZ(0, (float) (getMinecraft().level.getGameTime() + partialTick) / 10,0));
+
 
         guiGraphics.pose().scale(64.0F, -64.0F, 64.0F);
         this.minecraft.getItemRenderer().render(renderedStack, ItemDisplayContext.GUI, false, guiGraphics.pose(), guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, bakedmodel);

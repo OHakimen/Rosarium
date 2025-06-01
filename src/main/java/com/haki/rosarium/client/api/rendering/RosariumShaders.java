@@ -12,7 +12,14 @@ import net.neoforged.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class RosariumShaders {
     public static RosariumShader TRIANGLE_FAN = ShaderRegistry.addShader(ResourceLocation.fromNamespaceAndPath(Rosarium.MODID, "rendertype_triangle"), (shaderStateShard, resourceLocation) -> {
-        RenderType.CompositeState rendertype$state = RenderType.CompositeState.builder().setShaderState(shaderStateShard).setTextureState(new RenderStateShard.TextureStateShard(resourceLocation, true, true)).setLightmapState(RenderStateShard.NO_LIGHTMAP).setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY).setCullState(RenderStateShard.NO_CULL).createCompositeState(false);
+        RenderType.CompositeState rendertype$state =
+                RenderType.CompositeState.builder()
+                        .setShaderState(shaderStateShard)
+                        .setTextureState(new RenderStateShard.TextureStateShard(resourceLocation, true, true))
+                        .setLightmapState(RenderStateShard.NO_LIGHTMAP)
+                        .setTransparencyState(RenderStateShard.TRANSLUCENT_TRANSPARENCY)
+                        .setCullState(RenderStateShard.NO_CULL)
+                        .createCompositeState(false);
         return RenderType.create("triangle_fan", DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP, VertexFormat.Mode.TRIANGLE_STRIP, 1536, false, true, rendertype$state);
     }, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
 }
