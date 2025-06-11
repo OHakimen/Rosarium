@@ -14,6 +14,6 @@ public class Registry {
     public static final DeferredHolder<Item, TestItem> TEST_ITEM = ITEMS.register("test_item", () -> new TestItem(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus bus){
-        ITEMS.register(bus);
+        //ITEMS.register(bus);
     }
 }

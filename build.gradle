@@ -16,6 +16,12 @@ base {
     archivesName = mod_id
 }
 
+
+
+java {
+    withSourcesJar()
+}
+
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 neoForge {
@@ -157,6 +163,7 @@ publishing {
         }
     }
 }
+
 
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 idea {

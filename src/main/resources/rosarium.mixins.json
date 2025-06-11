@@ -7,7 +7,8 @@
   "mixins": [
   ],
   "client": [
-    "client.CapeRendererMixin"
+    "client.CapeRendererMixin",
+    "client.ShaderInstanceAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

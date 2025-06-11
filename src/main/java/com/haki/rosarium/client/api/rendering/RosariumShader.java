@@ -1,11 +1,14 @@
 package com.haki.rosarium.client.api.rendering;
 
+import com.haki.rosarium.mixins.client.ShaderInstanceAccessor;
+import com.mojang.blaze3d.shaders.Uniform;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.resources.ResourceLocation;
 
 public class RosariumShader {
-    ResourceLocation name;
+    public ResourceLocation name;
     public RosariumShader(ResourceLocation name) {
         this.name = name;
     }
@@ -24,5 +27,20 @@ public class RosariumShader {
                 .apply(ShaderRegistry.RosariumRenderType.shards.get(name),
                        null
                 );
+    }
+
+    public void attachExtraUniform(Uniform uniform){
+        ShaderInstance instance = getShaderInstance();
+
+        if(instance instanceof ShaderInstanceAccessor accessor){
+            if(!accessor.getUniforms().contains(uniform)){
+                accessor.getUniforms().add(uniform);
+                instance.markDirty();
+            }
+        }
+    }
+
+    public ShaderInstance getShaderInstance(){
+        return ShaderRegistry.RosariumRenderType.shaderInstanceHashMap.get(name);
     }
 }
