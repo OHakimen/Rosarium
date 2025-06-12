@@ -23,11 +23,11 @@ public abstract class RosariumItem extends Item {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
         if(stack.getItem() instanceof IWipItem) {
-            tooltipComponents.add(Component.literal("This item is a WIP").withColor(RosariumConstants.getRoseRed()));
+            tooltipComponents.add(Component.literal("This item is a WIP").withColor(RosariumConstants.ROSE_RED));
             tooltipComponents.add(Component.literal("This item might not behave as expected, here be dragons").withStyle(ChatFormatting.GRAY));
 
             if(stack.getItem() instanceof IVariantHolder holder) {
-                tooltipComponents.add(Component.literal("   Variant : %s/%s".formatted(holder.getVariant(stack) + 1, holder.getMaxVariants(stack))).withColor(RosariumConstants.getRoseRed()));
+                tooltipComponents.add(Component.literal("   Variant : %s/%s".formatted(holder.getVariant(stack) + 1, holder.getMaxVariants(stack))).withColor(RosariumConstants.ROSE_RED));
             }
         }
     }
