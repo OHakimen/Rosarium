@@ -2,7 +2,6 @@ package com.haki.rosarium.client.screens;
 
 import com.haki.rosarium.common.api.item.IVariantHolder;
 import com.haki.rosarium.common.packets.SyncVariantChangeC2S;
-import com.haki.rosarium.extras.SupporterHelper;
 import com.mojang.blaze3d.platform.Lighting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -10,7 +9,6 @@ import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -38,7 +36,7 @@ public class PickVariantScreen extends Screen {
 
         if (renderedStack.getItem() instanceof IVariantHolder holder) {
             Integer[] ints = new Integer[holder.getMaxVariants(renderedStack)];
-
+            
             for (int i = 0; i < holder.getMaxVariants(renderedStack); i++) {
                 ints[i] = i;
             }

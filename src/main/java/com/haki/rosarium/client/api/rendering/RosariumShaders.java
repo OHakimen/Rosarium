@@ -2,6 +2,8 @@ package com.haki.rosarium.client.api.rendering;
 
 import com.haki.rosarium.Rosarium;
 import com.haki.rosarium.RosariumConstants;
+import com.haki.rosarium.client.api.rendering.postprocessing.RosariumPostProcessingShaders;
+import com.haki.rosarium.client.api.rendering.postprocessing.TypedPostShader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.renderer.RenderStateShard;
@@ -10,7 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-import java.util.logging.Logger;
 
 @OnlyIn(Dist.CLIENT)
 public class RosariumShaders {
@@ -27,7 +28,11 @@ public class RosariumShaders {
     }, DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP);
 
 
+
+
     public static void boostrap(){
         RosariumConstants.getLogger().info("Bootstraping Shaders!!");
+
+        RosariumPostProcessingShaders.register(TypedPostShader.Type.SCREEN, RosariumConstants.modLoc("shaders/post/thingy.json"));
     }
 }

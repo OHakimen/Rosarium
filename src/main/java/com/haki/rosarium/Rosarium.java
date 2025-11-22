@@ -12,6 +12,7 @@ public class Rosarium {
     public Rosarium(IEventBus modEventBus, ModContainer modContainer) {
         SupporterHelper.loadSupporterData();
 
+
         Registry.register(modEventBus);
 
     }
