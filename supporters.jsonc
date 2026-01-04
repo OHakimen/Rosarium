@@ -1,0 +1,36 @@
+[
+  // Debug
+  {
+    "supporterUUID": "380df991-f603-344c-a090-369bad2a924a",
+    "isDev": true
+  },
+  // me
+  {
+    "supporterUUID": "8123e85b-4871-4354-8cbe-3980c995726c",
+    "isDev": true
+  },
+  // ==================== Friends ====================
+  //Dani
+  {
+    "supporterUUID": "c099c795-7e48-4859-a1fd-b3409e4713b9",
+    "isDev": false
+  },
+
+  //OMusgo
+  {
+    "supporterUUID": "cf824f19-1ae4-48a4-ad86-ba2a8d6c1e75",
+    "isDev": false
+  },
+
+  //The Nico (ElNico56)
+  {
+    "supporterUUID": "ee23ae31-b98d-41ea-86b2-cd795c1fb75b",
+    "isDev": false
+  },
+  //Stickia
+  {
+    "supporterUUID": "20dfe7f1-4c18-4545-849d-c4d764e118aa",
+    "isDev": false
+  }
+  // ==================== Supporters ====================
+]

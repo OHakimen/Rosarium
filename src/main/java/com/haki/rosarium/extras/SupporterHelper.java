@@ -12,23 +12,7 @@ public class SupporterHelper {
 
     public static void loadSupporterData() {
         supporters = Arrays.stream(gson.fromJson("""
-                [
-                    // Debug
-                    {
-                        "supporterUUID": "380df991-f603-344c-a090-369bad2a924a",
-                        "isDev": true
-                    },
-                    // me Rose :3
-                    {
-                        "supporterUUID": "8123e85b-4871-4354-8cbe-3980c995726c",
-                        "isDev": true
-                    },
-                    //The Nico (ElNico56)
-                    {
-                        "supporterUUID": "ee23ae31-b98d-41ea-86b2-cd795c1fb75b",
-                        "isDev": false
-                    }
-                ]
+               
                 """, Supporter[].class)).toList();
     }
 
