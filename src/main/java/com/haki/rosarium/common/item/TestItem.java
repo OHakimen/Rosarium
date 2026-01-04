@@ -31,12 +31,13 @@ public class TestItem extends RosariumItem implements IWipItem, IVariantHolder {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
 
-        if (level.isClientSide) {
-            if (!RosariumPostProcessingShaders.getPostProcessingShaders().isEmpty()) {
-                TypedPostShader thing = RosariumPostProcessingShaders.getPostProcessingShaders().getFirst();
-                thing.setActive(!RosariumPostProcessingShaders.getPostProcessingShaders().getFirst().isActive());
-            }
-        }
+//        if (level.isClientSide) {
+//            if (!RosariumPostProcessingShaders.getPostProcessingShaders().isEmpty()) {
+//                TypedPostShader thing = RosariumPostProcessingShaders.getPostProcessingShaders().getFirst();
+//                thing.getPostPasses().getFirst().getEffect().getUniform("DitherRes").set(1f);
+//                thing.setActive(!RosariumPostProcessingShaders.getPostProcessingShaders().getFirst().isActive());
+//            }
+//        }
 
         return InteractionResultHolder.success(stack);
     }

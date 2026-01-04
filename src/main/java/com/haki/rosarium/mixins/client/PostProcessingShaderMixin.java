@@ -2,22 +2,16 @@ package com.haki.rosarium.mixins.client;
 
 import com.haki.rosarium.client.api.rendering.postprocessing.RosariumPostProcessingShaders;
 import com.haki.rosarium.client.api.rendering.postprocessing.TypedPostShader;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.PostChain;
 import net.minecraft.server.packs.resources.ResourceProvider;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import javax.annotation.Nullable;
-
 @Mixin(GameRenderer.class)
 public class PostProcessingShaderMixin {
-    @Shadow @Nullable private PostChain postEffect;
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/pipeline/RenderTarget;bindWrite(Z)V", shift = At.Shift.BY, by = -1), cancellable = true)
     public void renderInjection(DeltaTracker deltaTracker, boolean renderLevel, CallbackInfo ci)

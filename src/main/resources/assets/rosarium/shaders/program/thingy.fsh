@@ -156,11 +156,12 @@ void main(){
     float grayScale = (diffuseColor.r + diffuseColor.g + diffuseColor.b)/3.0;
 
     float frag = dither8x8(gl_FragCoord.xy * DitherRes, grayScale);
-    vec3 shade = vec3(0.34, 0.27, 0.18);
 
-    vec3 color = diffuseColor.rgb * shade;
-    color += frag * grayScale * Color.rgb;
+    vec3 color = diffuseColor.rgb;
 
+    if(grayScale >= 0.4){
+        color = vec3(frag,frag,frag) * color/2;
+    }
 
     fragColor = vec4(color, 1.0);
 }
